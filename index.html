@@ -1,0 +1,281 @@
+
+
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>SSL-Drop. Главная</title>
+	<meta name="description" content="">
+	<meta name="keywords" content="">
+	<link rel="stylesheet" href="css/style.css">
+	<script src="js/jquery.js"></script>
+	<script src="js/select.js"></script>
+</head>
+
+<body>
+	<header>
+		<div class="page flex">
+			<a href="/" class="logo flex">
+				<span class="title">SSL-DROP</span>
+				<span class="subtitle">Лучшая партнерская сеть в Украине</span>
+			</a>
+			<div class="right flex">
+				<ul class="top-menu flex">
+					<li><a href="#goods" class="navigate">Товары</a></li>
+					<li><a href="#why-us" class="navigate">Почему мы</a></li>
+					<li><a href="#ask-a-question" class="navigate">Задать вопрос</a></li>
+				</ul>
+				<a href="#" class="cart flex">
+					<img src="images/cart.svg">
+					<span id="coui"></span>
+				</a>
+				<div class="cart-block">
+					<div class="bg-close"></div>
+					<div class="right-cart">
+						<div class="top flex">
+							<h3>Корзина</h3>
+							<a href="#" class="close flex"><span>Закрыть</span><img src="images/close.png"></a>
+						</div>
+
+						<!-- alexproger -->
+
+						<div id="show_items"></div>
+
+						<!-- alexproger -->
+
+					</div>
+				</div>
+			</div>
+		</div>
+	</header>
+	<main>
+		<div class="page">
+			<div class="head-block flex rel">
+				<div class="left flex">
+					<div class="imp-text flex">
+						<img src="images/star-s.png">
+						<span>Новое пополнение <span id="current_date_time_block"></span></span>
+
+						<script type="text/javascript">
+
+
+							function zero_first_format(value) {
+								if (value < 10) {
+									value = '0' + value;
+								}
+								return value;
+							}
+
+
+							function date_time() {
+								var current_datetime = new Date();
+								var day = zero_first_format(current_datetime.getDate());
+								var month = zero_first_format(current_datetime.getMonth() + 1);
+								var year = current_datetime.getFullYear();
+
+								return day + "." + month + "." + year;
+							}
+
+
+							document.getElementById('current_date_time_block').innerHTML = date_time();
+						</script>
+					</div>
+					<h1>Лучшие цены <br>на электронные сигареты!</h1>
+					<a href="#goods" class="black-btn flex navigate">
+						<span>Смотреть товар</span>
+						<img class="status" src="images/arrow.png">
+					</a>
+				</div>
+				<img class="img-cigarettes" src="images/product.png">
+				<div class="producers flex marquee">
+					<ul class="marquee__wrapper">
+						<li>Elf</li>
+						<li>Joyetech</li>
+						<li>Puff Bar Plus</li>
+						<li>HQ</li>
+					</ul>
+				</div>
+
+				<img class="text-circle" src="images/text-circle.png">
+			</div>
+			<div class="items" id="goods">
+				<h2>Качественный товар <br>по доступной цене</h2>
+				<ul class="flex" id="menu">
+					
+
+					    	<!-- alexproger -->
+					<!-- Товари додаються з бази данних -->
+					
+
+				</ul>
+			</div>
+			<div class="list flex" id="why-us">
+				<h2>3 причины <br>почему нам <br>стоит доверять</h2>
+				<ul>
+					<li class="flex"><img src="images/star-1.png"><span>Лучшие цены на электронные сигареты</span></li>
+					<li class="flex"><img src="images/star-2.png"><span>Лучшая партнерская сеть в Украине</span></li>
+					<li class="flex"><img src="images/star-3.png"><span>Лучший товар для лучших партнеров</span></li>
+				</ul>
+				<img class="text-circle" src="images/text-circle-2.png">
+			</div>
+			<div class="contacts" id="ask-a-question">
+				<h2>Возникли вопросы? <br>Пишите нам!</h2>
+				<p>Мы всегда стремимся подружиться с нашими клиентами и <br>партнерами, пишите нам по любым вопросам.</p>
+				<div class="soc flex">
+					<a href="#" class="black-btn tg flex">
+						<span>Написать в Telegram</span>
+						<img class="status" src="images/tg.png">
+					</a>
+					<a href="#" class="black-btn vb flex">
+						<span>Написать в Viber</span>
+						<img class="status" src="images/vb.png">
+					</a>
+				</div>
+			</div>
+		</div>
+	</main>
+	<footer>
+		<div class="page flex">
+			<a href="#" class="top"></a>
+			<ul class="bottom-menu flex">
+				<li><a href="#why-us" class="navigate">Почему мы</a></li>
+				<li><a href="#goods" class="navigate">Товары</a></li>
+				<li><a href="#ask-a-question" class="navigate">Задать вопрос</a></li>
+			</ul>
+			<div class="logo">
+				<a href="index.html" class="flex">
+					<span class="title">SSL-DROP</span>
+					<span class="subtitle">Лучшая партнерская сеть в Украине</span>
+				</a>
+			</div>
+			<div class="write-to-us flex">
+				<span>Пишите нам:</span>
+				<a href="#" class="vb flex"><img src="images/vb-ico.png"></a>
+				<a href="#" class="tg flex"><img src="images/tg-ico.png"></a>
+			</div>
+		</div>
+	</footer>
+	<script>
+		$(document).ready(function () {
+			$("a.navigate").on("click", function (e) {
+				var anchor = $(this);
+				$("html, body").stop().animate({
+					scrollTop: $(anchor.attr("href")).offset().top
+				}, 777);
+				e.preventDefault();
+				return false;
+			});
+
+			var btn = $(".top");
+
+			btn.on("click", function (e) {
+				e.preventDefault();
+				$("html, body").animate({ scrollTop: 0 }, "300");
+			});
+
+			$(".cart").click(function () {
+				$(".cart-block").show();
+				$("body").css({ 'overflow-y': 'hidden' });
+				return false;
+			});
+
+			$(".open-cart").click(function () {
+				$(".cart-block").show();
+				$("body").css({ 'overflow-y': 'hidden' });
+				return false;
+			});
+
+			$(".close").click(function () {
+				$(".cart-block").hide();
+				$("body").css({ 'overflow-y': 'visible' });
+				return false;
+			});
+
+			$(".bg-close").click(function () {
+				$(".cart-block").hide();
+				$("body").css({ 'overflow-y': 'visible' });
+				return false;
+			});
+
+			$("#view-items").click(function () {
+				$(".cart-block").hide();
+				$("body").css({ 'overflow-y': 'visible' });
+				return false;
+			});
+		});
+
+		function catalogItemCounter(field) {
+			var fieldCount = function (el) {
+				var min = el.data('min') || false,
+					max = el.data('max') || false,
+					dec = el.prev('.dec'),
+					inc = el.next('.inc');
+
+				function init(el) {
+					if (!el.attr('disabled')) {
+						dec.on('click', decrement);
+						inc.on('click', increment);
+					}
+
+					function decrement() {
+						var value = parseInt(el[0].value);
+						value--;
+
+						if (!min || value >= min) {
+							el[0].value = value;
+						}
+					};
+
+					function increment() {
+						var value = parseInt(el[0].value);
+
+						value++;
+
+						if (!max || value <= max) {
+							el[0].value = value++;
+						}
+					};
+				}
+
+				el.each(function () {
+					init($(this));
+				});
+			};
+
+			$(field).each(function () {
+				fieldCount($(this));
+			});
+		}
+
+		catalogItemCounter('.fieldCount');
+	</script>
+
+	<!-- Увеличение цены в Корзине, начало -->
+	<!-- <script type="text/javascript">
+		let smallPrice = Number(0);
+		var cartPrice = document.getElementsByClassName("cartPrice");
+		for (let i = 0; i < cartPrice.length; i++) {
+			// console.log('cartPrice ' + Number(cartPrice[i].textContent));
+			smallPrice = smallPrice + Number(cartPrice[i].textContent);
+		}
+		// console.log('smallPrice' + smallPrice);
+
+		var tempPrice = document.querySelector("#price-value");
+		// console.log('tempPrice' + tempPrice.textContent);
+		tempPrice.textContent = smallPrice;
+		var bigPrice = document.querySelector("#add-more");
+		bigPrice.textContent = smallPrice * 2;
+		console.log('bigPrice.textContent' + bigPrice.textContent);
+	</script> -->
+	<!-- Увеличение цены в Корзине, конец -->
+
+
+
+
+	<script src="js/cart.js">/*   --- alexproger ---   */</script>
+</body>
+
+</html>

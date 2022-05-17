@@ -1,0 +1,204 @@
+
+
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>SSL-Drop. Главная</title>
+	<meta name="description" content="">
+	<meta name="keywords" content="">
+	<link rel="stylesheet" href="css/style.css">
+	<script src="js/jquery.js"></script>
+	<script src="js/select.js"></script>
+</head>
+
+<body>
+	<header>
+		<div class="page flex">
+			<a href="/" class="logo flex">
+				<span class="title">SSL-DROP</span>
+				<span class="subtitle">Лучшая партнерская сеть в Украине</span>
+			</a>
+			<div class="right flex">
+				<ul class="top-menu flex">
+					<li><a href="#goods" class="navigate">Товары</a></li>
+					<li><a href="#why-us" class="navigate">Почему мы</a></li>
+					<li><a href="#ask-a-question" class="navigate">Задать вопрос</a></li>
+				</ul>
+				<a href="#" class="cart flex">
+					<img src="images/cart.svg">
+					<span id="coui"></span>
+				</a>
+				<div class="cart-block">
+					<div class="bg-close"></div>
+					<div class="right-cart">
+						<div class="top flex">
+							<h3>Корзина</h3>
+							<a href="#" class="close flex"><span>Закрыть</span><img src="images/close.png"></a>
+						</div>
+
+
+						<!-- alexproger -->
+						
+						<div id="show_items"></div>
+
+						<!-- alexproger -->
+
+					</div>
+				</div>
+			</div>
+		</div>
+	</header>
+	<main>
+		<div class="page">
+			<div class="head-block flex rel">
+				
+                <!-- alexproger -->
+
+                <div class="order">
+                    <h2>Заказ оформлен</h2>
+                    <a href="/" id="home"><h3>Перейти на главную</h3></a>
+                </div>
+
+				<!-- alexproger -->
+
+            </div>
+			<div class="contacts" id="ask-a-question">
+				<h2>Возникли вопросы? <br>Пишите нам!</h2>
+				<p>Мы всегда стремимся подружиться с нашими клиентами и <br>партнерами, пишите нам по любым вопросам.</p>
+				<div class="soc flex">
+					<a href="#" class="black-btn tg flex">
+						<span>Написать в Telegram</span>
+						<img class="status" src="images/tg.png">
+					</a>
+					<a href="#" class="black-btn vb flex">
+						<span>Написать в Viber</span>
+						<img class="status" src="images/vb.png">
+					</a>
+				</div>
+			</div>
+		</div>
+	</main>
+	<footer>
+		<div class="page flex">
+			<a href="#" class="top"></a>
+			<ul class="bottom-menu flex">
+				<li><a href="#why-us" class="navigate">Почему мы</a></li>
+				<li><a href="#goods" class="navigate">Товары</a></li>
+				<li><a href="#ask-a-question" class="navigate">Задать вопрос</a></li>
+			</ul>
+			<div class="logo">
+				<a href="index.html" class="flex">
+					<span class="title">SSL-DROP</span>
+					<span class="subtitle">Лучшая партнерская сеть в Украине</span>
+				</a>
+			</div>
+			<div class="write-to-us flex">
+				<span>Пишите нам:</span>
+				<a href="#" class="vb flex"><img src="images/vb-ico.png"></a>
+				<a href="#" class="tg flex"><img src="images/tg-ico.png"></a>
+			</div>
+		</div>
+	</footer>
+	<script>
+		$(document).ready(function () {
+			$("a.navigate").on("click", function (e) {
+				var anchor = $(this);
+				$("html, body").stop().animate({
+					scrollTop: $(anchor.attr("href")).offset().top
+				}, 777);
+				e.preventDefault();
+				return false;
+			});
+
+			var btn = $(".top");
+
+			btn.on("click", function (e) {
+				e.preventDefault();
+				$("html, body").animate({ scrollTop: 0 }, "300");
+			});
+
+			$(".cart").click(function () {
+				$(".cart-block").show();
+				$("body").css({ 'overflow-y': 'hidden' });
+				return false;
+			});
+
+			$(".open-cart").click(function () {
+				$(".cart-block").show();
+				$("body").css({ 'overflow-y': 'hidden' });
+				return false;
+			});
+
+			$(".close").click(function () {
+				$(".cart-block").hide();
+				$("body").css({ 'overflow-y': 'visible' });
+				return false;
+			});
+
+			$(".bg-close").click(function () {
+				$(".cart-block").hide();
+				$("body").css({ 'overflow-y': 'visible' });
+				return false;
+			});
+
+			$("#view-items").click(function () {
+				$(".cart-block").hide();
+				$("body").css({ 'overflow-y': 'visible' });
+				return false;
+			});
+		});
+
+		function catalogItemCounter(field) {
+			var fieldCount = function (el) {
+				var min = el.data('min') || false,
+					max = el.data('max') || false,
+					dec = el.prev('.dec'),
+					inc = el.next('.inc');
+
+				function init(el) {
+					if (!el.attr('disabled')) {
+						dec.on('click', decrement);
+						inc.on('click', increment);
+					}
+
+					function decrement() {
+						var value = parseInt(el[0].value);
+						value--;
+
+						if (!min || value >= min) {
+							el[0].value = value;
+						}
+					};
+
+					function increment() {
+						var value = parseInt(el[0].value);
+
+						value++;
+
+						if (!max || value <= max) {
+							el[0].value = value++;
+						}
+					};
+				}
+
+				el.each(function () {
+					init($(this));
+				});
+			};
+
+			$(field).each(function () {
+				fieldCount($(this));
+			});
+		}
+
+		catalogItemCounter('.fieldCount');
+	</script>
+
+    <script src="js/cart.js"> /*   --- alexproger ---   */</script>
+</body>
+
+</html>

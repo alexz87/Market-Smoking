@@ -1,0 +1,305 @@
+
+
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>SSL-Drop. Оформление заказа</title>
+	<meta name="description" content="">
+	<meta name="keywords" content="">
+	<link rel="stylesheet" href="css/style.css">
+	<script src="js/jquery.js"></script>
+	<script src="js/select.js"></script>
+</head>
+
+<body>
+	<header>
+		<div class="page flex">
+			<a href="/" class="logo flex">
+				<span class="title">SSL-DROP</span>
+				<span class="subtitle">Лучшая партнерская сеть в Украине</span>
+			</a>
+			<div class="right flex">
+				<ul class="top-menu flex">
+					<li><a href="index.html#why-us" class="navigate">Почему мы</a></li>
+					<li><a href="index.html#goods" class="navigate">Товары</a></li>
+					<li><a href="index.html#ask-a-question" class="navigate">Задать вопрос</a></li>
+				</ul>
+				<a href="#" class="cart flex">
+					<img src="images/cart.svg">
+					<span id="coui"></span>
+				</a>
+				<div class="cart-block">
+					<div class="bg-close"></div>
+					<div class="right-cart">
+						<div class="top flex">
+							<h3>Корзина</h3>
+							<a href="#" class="close flex"><span>Закрыть</span><img src="images/close.png"></a>
+						</div>
+															
+						<!-- alexproger -->
+
+						<div id="show_items"></div>
+
+						<!-- alexproger -->
+
+					</div>
+				</div>
+			</div>
+		</div>
+	</header>
+	<main>
+		<div class="page flex checkout">
+			<div class="form">
+				<h1>Оформление заказа</h1>
+				<form id="form_checkout" action="php/telegram.php" method="post">
+					<h2>Контактные данные</h2>
+					<div class="contact-details">
+						<div class="flex text">
+							<label for="name">Имя получателя</label>
+							<input id="name" type="text" name="name" placeholder="Романчук Сергей">
+						</div>
+						<div class="flex text">
+							<label for="phone">Номер телефона получателя</label>
+							<input id="phone" type="tel" name="phone" placeholder="+380XXXXXXXXX" value="+380XXXXXXXXX"
+								pattern="\+380\d{9}" required>
+						</div>
+						<div class="flex text">
+							<label for="email">Ваш email</label>
+							<input id="email" type="email" name="email" placeholder="example@gmail.com" required>
+						</div>
+					</div>
+					<div class="delivery">
+						<h2>Доставка</h2>
+						<div class="flex radio">
+							<div>
+								<input id="pickup" type="radio" name="del" checked>
+								<label for="pickup">Самовывоз из Новой почты</label>
+							</div>
+							<div>
+								<input id="courier" type="radio" name="del">
+								<label for="courier">Курьер Новая почта</label>
+							</div>
+						</div>
+						<div class="flex text">
+							<label for="city-number">Город и номер отделения Новой почты</label>
+							<input id="city-number" type="text" name="city-number" placeholder="город Киев, отделение №1">
+						</div>
+					</div>
+					<div class="payment">
+						<h2>Оплата</h2>
+						<div class="flex radio">
+							<div>
+								<input id="receipt" type="radio" name="pay" checked>
+								<label for="receipt">Оплата при получении</label>
+							</div>
+							<div>
+								<input id="card" type="radio" name="pay">
+								<label for="card">Оплата картой Visa / Mastercard</label>
+							</div>
+						</div>
+						<div class="flex text">
+							<label for="comment">Комментарий к заказу <span>(не обязательно)</span></label>
+							<input id="comment" type="text" name="comment" placeholder="Хотите сообщить что-то ещё?">
+						</div>
+					</div>
+					<button id="send" class="black-btn flex" type="submit" onclick="">
+						<span>Оформить заказ</span>
+						<img class="status" src="images/arrow.png">
+					</button>
+				</form>
+			</div>
+			<div class="items-res">
+				<h2>Корзина</h2>
+				<div class="items">
+
+				<!-- alexproger -->
+
+				<div id="checkout"></div>
+
+				<!-- alexproger -->
+
+				</div>
+				<div class="total flex">
+					<h3>Итого:</h3>
+					<div class="price">0 грн.</div>
+				</div>
+			</div>
+		</div>
+	</main>
+	<footer>
+		<div class="page flex">
+			<a href="#" class="top"></a>
+			<ul class="bottom-menu flex">
+				<li><a href="index.html#why-us" class="navigate">Почему мы</a></li>
+				<li><a href="index.html#goods" class="navigate">Товары</a></li>
+				<li><a href="index.html#ask-a-question" class="navigate">Задать вопрос</a></li>
+			</ul>
+			<div class="logo">
+				<a href="index.html" class="flex">
+					<span class="title">SSL-DROP</span>
+					<span class="subtitle">Лучшая партнерская сеть в Украине</span>
+				</a>
+			</div>
+			<div class="write-to-us flex">
+				<span>Пишите нам:</span>
+				<a href="#" class="vb flex"><img src="images/vb-ico.png"></a>
+				<a href="#" class="tg flex"><img src="images/tg-ico.png"></a>
+			</div>
+		</div>
+	</footer>
+	<script>
+		$(document).ready(function () {
+			$("a.navigate").on("click", function (e) {
+				var anchor = $(this);
+				$("html, body").stop().animate({
+					scrollTop: $(anchor.attr("href")).offset().top
+				}, 777);
+				e.preventDefault();
+				return false;
+			});
+
+			var btn = $(".top");
+
+			btn.on("click", function (e) {
+				e.preventDefault();
+				$("html, body").animate({ scrollTop: 0 }, "300");
+			});
+
+			$(".cart").click(function () {
+				$(".cart-block").show();
+				$("body").css({ 'overflow-y': 'hidden' });
+				return false;
+			});
+
+			$(".close").click(function () {
+				$(".cart-block").hide();
+				$("body").css({ 'overflow-y': 'visible' });
+				return false;
+			});
+
+			$(".bg-close").click(function () {
+				$(".cart-block").hide();
+				$("body").css({ 'overflow-y': 'visible' });
+				return false;
+			});
+
+			$("#view-items").click(function () {
+				$(".cart-block").hide();
+				$("body").css({ 'overflow-y': 'visible' });
+				return false;
+			});
+		});
+
+		function catalogItemCounter(field) {
+			var fieldCount = function (el) {
+				var min = el.data('min') || false,
+					max = el.data('max') || false,
+					dec = el.prev('.dec'),
+					inc = el.next('.inc');
+
+				function init(el) {
+					if (!el.attr('disabled')) {
+						dec.on('click', decrement);
+						inc.on('click', increment);
+					}
+
+					function decrement() {
+						var value = parseInt(el[0].value);
+						value--;
+
+						if (!min || value >= min) {
+							el[0].value = value;
+						}
+					};
+
+					function increment() {
+						var value = parseInt(el[0].value);
+
+						value++;
+
+						if (!max || value <= max) {
+							el[0].value = value++;
+						}
+					};
+				}
+
+				el.each(function () {
+					init($(this));
+				});
+			};
+
+			$(field).each(function () {
+				fieldCount($(this));
+			});
+		}
+
+		catalogItemCounter('.fieldCount');
+	</script>
+
+	<!-- Проверка телефона и емейла, начало  -->
+	<script type="text/javascript">
+		function setCursorPosition(pos, e) {
+			e.focus();
+			if (e.setSelectionRange) e.setSelectionRange(pos, pos);
+			else if (e.createTextRange) {
+				var range = e.createTextRange();
+				range.collapse(true);
+				range.moveEnd("character", pos);
+				range.moveStart("character", pos);
+				range.select()
+			}
+		}
+
+		function mask(e) {
+			// console.log('mask', e);
+			var matrix = this.placeholder,// .defaultValue
+				i = 0,
+				def = matrix.replace(/\D/g, ""),
+				val = this.value.replace(/\D/g, "");
+			def.length >= val.length && (val = def);
+			matrix = matrix.replace(/[X\d]/g, function (a) {
+				return val.charAt(i++) || "X"
+			});
+			this.value = matrix;
+			i = matrix.lastIndexOf(val.substr(-1));
+			i < matrix.length && matrix != this.placeholder ? i++ : i = matrix.indexOf("X");
+			setCursorPosition(i, this)
+		}
+		window.addEventListener("DOMContentLoaded", function () {
+			var input = document.querySelector("#phone");
+			if (input.addEventListener("input", mask, false)) {
+				setCursorPosition(4, input);
+				input.focus();
+			}
+
+		});
+
+		const EMAIL_REGEXP = /^(([^<>()[\].,;:\s@"]+(\.[^<>()[\].,;:\s@"]+)*)|(".+"))@(([^<>()[\].,;:\s@"]+\.)+[^<>()[\].,;:\s@"]{2,})$/iu;
+		const input = document.querySelector("#email");
+
+		function isEmailValid(value) {
+			return EMAIL_REGEXP.test(value);
+		}
+
+		function onInput() {
+			if (isEmailValid(input.value)) {
+				input.style.borderColor = '#DBDBDB';
+			} else {
+				input.style.borderColor = 'red';
+			}
+		}
+
+		input.addEventListener('input', onInput);
+
+	</script>
+	<!-- Проверка телефона и емейла, конец  -->
+
+	
+	<script src="js/cart.js">/*   --- alexproger ---   */</script>
+</body>
+
+</html>
